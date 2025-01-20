@@ -18,7 +18,7 @@ export default function SideNav() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed top-0 min-h-screen left-0 w-[300px] bg-gray-900 rounded-r-2xl">
+    <aside className="hidden lg:block fixed top-0 min-h-screen left-0 w-[300px] bg-gray-900 rounded-r-2xl">
       <div className="pl-8 py-10">
         <Image 
           src="/images/logo-large.svg"
