@@ -20,7 +20,7 @@ export default async function DashboardPage() {
     <>        
       <div className="w-full h-full space-y-8 py-8">
         <h1 className="text-gray-900 text-preset-1">Overview</h1>
-        <div className="flex justify-between gap-x-6">
+        <div className="flex flex-col md:flex-row justify-between gap-x-6 gap-y-3">
           <div className="basis-1/3 h-[120px] space-y-3 bg-gray-900 rounded-xl p-6">
             <p className="text-white text-preset-4">Current Balance</p>
             <p className="text-white text-preset-1">{current}</p>

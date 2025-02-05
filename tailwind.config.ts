@@ -60,7 +60,8 @@ const config: Config = {
   				'5': 'hsl(var(--chart-5))'
   			},
         project: {
-          green: 'hsl(177,52%,32%)'
+          green: 'hsl(177,52%,32%)',
+          red: 'hsl(7,58%,50%)'
         }
   		}
   	}
