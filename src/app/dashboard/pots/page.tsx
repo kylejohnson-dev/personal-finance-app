@@ -4,10 +4,15 @@ import Title from "@/components/ui/dashboard/title";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus } from "lucide-react";
+import { promises as fs } from "fs";
+import { PotType } from "@/lib/types";
 
-export default function Page() {
+export default async function Page() {
+  const file = await fs.readFile(process.cwd() + '/src/app/data.json', 'utf8');
+  const data = JSON.parse(file);
+
   return (
     <div className="flex flex-col gap-y-8 py-8">
       <div className="flex items-center justify-between">
@@ -63,11 +68,17 @@ export default function Page() {
         </Dialog>
       </div>
       <div className="grid lg:grid-cols-2 gap-6">
-        <Pot />
-        <Pot />
-        <Pot />
-        <Pot />
-        <Pot />
+        {data.pots.map((pot: PotType) => {
+          return (
+            <Pot 
+              key={pot.name}
+              name={pot.name}
+              target={pot.target}
+              total={pot.total}
+              theme={pot.theme}
+            />
+          )
+        })}
       </div>
     </div>
   );

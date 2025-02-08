@@ -4,8 +4,9 @@ import { ChevronRight, Landmark } from "lucide-react";
 import { promises as fs } from "fs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BudgetPieChart } from "@/components/pie-chart";
-import { Transaction } from "@/lib/types";
+import { PotType, Transaction } from "@/lib/types";
 import Link from "next/link";
+import clsx from "clsx";
 
 export default async function DashboardPage() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -55,8 +56,26 @@ export default async function DashboardPage() {
                       <p className="text-gray-900 text-preset-1">$850</p>
                     </div>
                   </div>
-                  <div className="relative grid grid-cols-2">
-                    <div className="space-x-1 before:absolute before:-ml-3 before:bg-green-500 before:w-2 before:h-10 before:rounded-full ml-3">
+                  <div className="relative grid grid-cols-2 gap-y-4">
+                    {data.pots.slice(0,4).map((pot: PotType) => {
+                      const color = pot.theme;
+                      return (
+                        <div 
+                          key={pot.name} 
+                          className="flex items-center gap-x-4"
+                        >
+                          <span 
+                            className="w-1 h-full rounded-full"
+                            style={{ backgroundColor: color }}
+                          />
+                          <span>
+                            <p className="text-gray-500 text-preset-5">{pot.name}</p>
+                            <p className="text-gray-900 text-preset-4-bold">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(pot.total)}</p>
+                          </span>
+                        </div>
+                      )
+                    })}
+                    {/* <div className="space-x-1 before:absolute before:-ml-3 before:bg-green-500 before:w-2 before:h-10 before:rounded-full ml-3">
                       <p className="text-gray-500 text-preset-5">Savings</p>
                       <p className="text-gray-900 text-preset-4-bold">$159</p>
                     </div>
@@ -71,7 +90,7 @@ export default async function DashboardPage() {
                     <div className="space-x-1 before:absolute before:-ml-3 before:bg-green-500 before:w-2 before:h-10 before:rounded-full ml-3">
                       <p className="text-gray-500 text-preset-5">New Laptop</p>
                       <p className="text-gray-900 text-preset-4-bold">$10</p>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

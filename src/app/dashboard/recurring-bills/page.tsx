@@ -44,7 +44,28 @@ export default function Page() {
           </div>
         </div>
         <div className="col-span-12 lg:col-span-7 bg-white rounded-xl p-6">
-
+          <div className="flex items-center justify-between">
+            <Input 
+              placeholder="Search bills"
+              className="max-w-[320px]"
+            />
+            <div className="flex items-center">
+              <Label className="text-nowrap">Sort by</Label>
+              <Select defaultValue="latest">
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="latest">Latest</SelectItem>
+                  <SelectItem value="oldest">Oldest</SelectItem>
+                  <SelectItem value="a-to-z">A to Z</SelectItem>
+                  <SelectItem value="z-to-a">Z to A</SelectItem>
+                  <SelectItem value="highest">Highest</SelectItem>
+                  <SelectItem value="lowest">Lowest</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </div>
       </div>
     </div>

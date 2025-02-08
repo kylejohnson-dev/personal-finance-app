@@ -6,3 +6,10 @@ export type Transaction = {
   amount: number;
   recurring: boolean;
 }
+
+export type PotType = {
+  name: string,
+  target: number,
+  total: number,
+  theme: string
+}
