@@ -1,17 +1,25 @@
+import { Skeleton } from "@/components/ui/skeleton";
+
 export default function Loading() {
   return (
     <>        
       <div className="w-full h-full space-y-8 py-8">
         <h1 className="text-gray-900 text-preset-1">Overview</h1>
-        <div className="flex justify-between gap-x-6">
+        <div className="flex justify-between gap-x-6 animate-pulse">
           <div className="basis-1/3 h-[120px] space-y-3 bg-gray-900 rounded-xl p-6">
+            <Skeleton className="h-[21px] w-44" />
+            <Skeleton className="h-[38.398px] w-44" />
           </div>
           <div className="basis-1/3 space-y-3 bg-white rounded-xl p-6">
+            <Skeleton className="h-[21px] w-44" />
+            <Skeleton className="h-[38.398px] w-44" />
           </div>
           <div className="basis-1/3 space-y-3 bg-white rounded-xl p-6">
+            <Skeleton className="h-[21px] w-44" />
+            <Skeleton className="h-[38.398px] w-44" />
           </div>
         </div>
-        <div className="grid grid-cols-12 gap-6">
+        <div className="grid grid-cols-12 gap-6 animate-pulse">
           <div className="col-span-12 lg:col-span-7 space-y-6">
             <div className="w-full h-[218px] bg-white rounded-xl p-8">
             </div>

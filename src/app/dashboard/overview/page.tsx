@@ -8,7 +8,7 @@ import { PotType, Transaction } from "@/lib/types";
 import Link from "next/link";
 import clsx from "clsx";
 
-export default async function DashboardPage() {
+export default async function Page() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const file = await fs.readFile(process.cwd() + '/src/app/data.json', 'utf8');
   const data = JSON.parse(file);
@@ -37,7 +37,7 @@ export default async function DashboardPage() {
         </div>
         <div className="grid grid-cols-12 gap-6">
           <div className="col-span-12 lg:col-span-7 space-y-6">
-            <div className="w-full h-[218px] bg-white rounded-xl p-8">
+            <div className="w-full bg-white rounded-xl p-8">
               <div className="space-y-5">
                 <div className="flex items-center justify-between">
                   <h2 className="text-gray-900 text-preset-2">Pots</h2>
@@ -48,7 +48,7 @@ export default async function DashboardPage() {
                     </Link>
                   </Button>  
                 </div>
-                <div className="grid grid-cols-2 gap-x-5">
+                <div className="grid md:grid-cols-2 gap-5">
                   <div className="flex flex-row items-center gap-x-4 bg-neutral-100 rounded-xl p-4">
                     <Landmark className="w-8 h-8" />
                     <div>
@@ -68,8 +68,8 @@ export default async function DashboardPage() {
                             className="w-1 h-full rounded-full"
                             style={{ backgroundColor: color }}
                           />
-                          <span>
-                            <p className="text-gray-500 text-preset-5">{pot.name}</p>
+                          <span className="overflow-hidden">
+                            <p className="text-gray-500 text-preset-5 text-nowrap">{pot.name}</p>
                             <p className="text-gray-900 text-preset-4-bold">{new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(pot.total)}</p>
                           </span>
                         </div>

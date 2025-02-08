@@ -6,12 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Plus } from "lucide-react";
-import { promises as fs } from "fs";
 import { PotType } from "@/lib/types";
+import { fetchPots } from "@/lib/data";
 
 export default async function Page() {
-  const file = await fs.readFile(process.cwd() + '/src/app/data.json', 'utf8');
-  const data = JSON.parse(file);
+  const pots = await fetchPots();
 
   return (
     <div className="flex flex-col gap-y-8 py-8">
@@ -68,7 +67,7 @@ export default async function Page() {
         </Dialog>
       </div>
       <div className="grid lg:grid-cols-2 gap-6">
-        {data.pots.map((pot: PotType) => {
+        {pots.map((pot: PotType) => {
           return (
             <Pot 
               key={pot.name}
