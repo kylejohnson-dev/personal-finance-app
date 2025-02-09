@@ -8,8 +8,9 @@ export type Transaction = {
 }
 
 export type PotType = {
-  name: string,
-  target: number,
-  total: number,
-  theme: string
+  id: string;
+  name: string;
+  target: number;
+  total: number;
+  theme: string;
 }

@@ -7,6 +7,7 @@ import { BudgetPieChart } from "@/components/pie-chart";
 import { PotType, Transaction } from "@/lib/types";
 import Link from "next/link";
 import clsx from "clsx";
+import { fetchPots } from "@/lib/data";
 
 export default async function Page() {
   await new Promise((resolve) => setTimeout(resolve, 3000));
@@ -16,6 +17,8 @@ export default async function Page() {
   const current = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.balance.current)
   const income = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.balance.income)
   const expenses = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.balance.expenses)
+
+  const pots = await fetchPots(4);
 
   return (
     <>        
@@ -57,11 +60,11 @@ export default async function Page() {
                     </div>
                   </div>
                   <div className="relative grid grid-cols-2 gap-y-4">
-                    {data.pots.slice(0,4).map((pot: PotType) => {
+                    {pots.map((pot: PotType) => {
                       const color = pot.theme;
                       return (
                         <div 
-                          key={pot.name} 
+                          key={pot.id} 
                           className="flex items-center gap-x-4"
                         >
                           <span 
@@ -124,7 +127,7 @@ export default async function Page() {
                         <TableCell>{t.amount}</TableCell>
                       </TableRow>
                     ))} */}
-                    {data.transactions.map((t: Transaction) => (
+                    {data.transactions.slice(0,5).map((t: Transaction) => (
                       <TableRow key={t.name}>
                         <TableCell>
                           <span className="flex items-center gap-x-4">

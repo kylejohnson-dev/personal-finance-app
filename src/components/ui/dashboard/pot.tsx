@@ -43,7 +43,7 @@ export default function Pot({ name, target, total, theme }: PotProps) {
         </div>
         <Progress value={percentage} />
         <div className="flex items-center justify-between mt-3">
-          <p className="text-preset-5-bold">7.95%</p>
+          <p className="text-preset-5-bold">{percentage.toFixed(2)}%</p>
           <p className="text-preset-5">Target of {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(target)}</p>
         </div>
       </div>
