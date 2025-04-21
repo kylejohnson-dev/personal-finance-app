@@ -1,8 +1,8 @@
-export type Transaction = {
+export type TransactionType = {
   avatar: string;
   name: string;
   category: string;
-  date: string;
+  date: string; // this might be a different type
   amount: number;
   recurring: boolean;
 }

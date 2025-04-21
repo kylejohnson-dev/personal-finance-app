@@ -4,8 +4,22 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 //Budgets
+const BudgetFormSchema = z.object({
+  id: z.string(),
+  category: z.string(),
+  maximum: z.coerce.number(),
+  theme: z.string(),
+});
+
+const CreateBudget = BudgetFormSchema.omit({ id: true });
+const UpdateBudget = BudgetFormSchema.omit({ id: true });
+
 export async function createBudget(formData: FormData) {
-  
+  const { category, maximum, theme } = CreateBudget.parse({
+    category: formData.get('category'),
+    maximum: formData.get('maximum'),
+    theme: formData.get('theme'),
+  });
 }
 
 export async function updateBudget(id: string, formData: FormData) {
@@ -24,7 +38,6 @@ const PotFormSchema = z.object({
   target: z.coerce.number(),
   total: z.coerce.number(),
   theme: z.string(),
-
 });
 
 const CreatePot = PotFormSchema.omit({ id: true });
@@ -75,3 +88,5 @@ export async function deletePot(id: string) {
   await sql`DELETE FROM pots WHERE id = ${id}`;
   revalidatePath('/dashboard/pots');
 }
+
+// Transactions
