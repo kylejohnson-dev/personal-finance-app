@@ -21,12 +21,12 @@ export const columns: ColumnDef<TransactionType>[] = [
       return (
         <div className="flex items-center gap-x-4">
           <div className="w-10 h-10 rounded-full overflow-hidden">
-            {/* <Image 
-              src={imageLoader({ src: avatar })}
+            <Image 
+              src={row.original.avatar}
               width={40}
               height={40}
               alt="name"
-            /> */}
+            />
           </div>
           <span>{name as string}</span>
         </div>

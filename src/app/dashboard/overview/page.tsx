@@ -4,7 +4,7 @@ import { ChevronRight, Landmark } from "lucide-react";
 import { promises as fs } from "fs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BudgetPieChart } from "@/components/pie-chart";
-import { PotType, Transaction } from "@/lib/types";
+import { PotType, TransactionType } from "@/lib/types";
 import Link from "next/link";
 import clsx from "clsx";
 import { fetchPots } from "@/lib/data";
@@ -127,7 +127,7 @@ export default async function Page() {
                         <TableCell>{t.amount}</TableCell>
                       </TableRow>
                     ))} */}
-                    {data.transactions.slice(0,5).map((t: Transaction) => (
+                    {data.transactions.slice(0,5).map((t: TransactionType) => (
                       <TableRow key={t.name}>
                         <TableCell>
                           <span className="flex items-center gap-x-4">
