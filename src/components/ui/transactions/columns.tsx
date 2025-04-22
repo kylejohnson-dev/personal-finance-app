@@ -1,19 +1,25 @@
 "use client"
 
 import { TransactionType } from "@/lib/types"
-import { ColumnDef, createColumnHelper } from "@tanstack/react-table"
+import { ColumnDef } from "@tanstack/react-table"
 import Image from "next/image"
-
-const imageLoader = ({ src }: { src: string }) => {
-  return `${src}`
-}
-
-const columnHelper = createColumnHelper();
+import { Button } from "../button"
+import { ArrowUpDown } from "lucide-react"
 
 export const columns: ColumnDef<TransactionType>[] = [
   {
     accessorKey: "name",
-    header: () => <div>Recipient / Sender</div>,
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Recipient / Sender
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       const name: string = row.getValue("name")
       // const avatar: string = row.getValue("avatar")

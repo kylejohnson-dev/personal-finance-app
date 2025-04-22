@@ -1,4 +1,5 @@
 export type TransactionType = {
+  id: number;
   avatar: string;
   name: string;
   category: string;
